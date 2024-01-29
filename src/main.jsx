@@ -13,7 +13,9 @@ import ErrorPage from './error-page' // error page
 import Contact, {
   loader as contactLoader,
 } from './routes/contact' // contact component
-import EditContact from './routes/edit'; // contact edit component
+import EditContact, {
+  action as editAction,
+} from './routes/edit'; // contact edit component
 
 // defined root route
 const router = createBrowserRouter([
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
         path: "contacts/:contactId/edit",
         element: <EditContact />,
         loader: contactLoader,
+        action: editAction,
       },
     ],
   },
