@@ -10,7 +10,9 @@ import Root, {
   action as rootAction,
 } from "./routes/root" // root layout component with data loader and contact creator
 import ErrorPage from './error-page' // error page
-import Contact from './routes/contact' // contact component
+import Contact, {
+  loader as contactLoader,
+} from './routes/contact' // contact component
 
 // defined root route
 const router = createBrowserRouter([
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
         // contact route inside root
         path: "contacts/:contactId",
         element: <Contact />,
+        loader: contactLoader,
       }
     ]
   },
