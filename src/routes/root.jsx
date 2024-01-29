@@ -9,8 +9,8 @@ import {
     redirect,
     useNavigation,
     } from "react-router-dom";
-
 import { getContacts, createContact } from "../contacts";
+import { useEffect  } from "react";
 
 // contact creator redirected to contact editor
 export async function action() {
@@ -22,12 +22,16 @@ export async function loader({ request }) {
     const url = new URL(request.url);
     const q = url.searchParams.get("q");
     const contacts = await getContacts(q);
-    return { contacts }
+    return { contacts, q }
 }
 
 export default function Root() {
-    const { contacts } = useLoaderData();
+    const { contacts, q } = useLoaderData();
     const navigation = useNavigation();
+
+    useEffect(() => { // synch URLs to form state
+        document.getElementById("q").value = q;
+    }, [q]);
     return (
       <>
         <div id="sidebar">
@@ -40,6 +44,7 @@ export default function Root() {
                 placeholder="Search"
                 type="search"
                 name="q"
+                defaultValue={q}
               />
               <div
                 id="search-spinner"
