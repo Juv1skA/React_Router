@@ -7,7 +7,7 @@ import {
     useLoaderData, 
     Form,  } from "react-router-dom";
 
-import { getContact, createContact } from "../contacts";
+import { getContacts, createContact } from "../contacts";
 // contact creator
 export async function action() {
     const contact = await createContact();
@@ -15,7 +15,7 @@ export async function action() {
 }
 // data loader
 export async function loader() {
-    const contacts = await getContact();
+    const contacts = await getContacts();
     return { contacts }
 }
 
