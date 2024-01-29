@@ -13,6 +13,7 @@ import ErrorPage from './error-page' // error page
 import Contact, {
   loader as contactLoader,
 } from './routes/contact' // contact component
+import EditContact from './routes/edit'; // contact edit component
 
 // defined root route
 const router = createBrowserRouter([
@@ -28,10 +29,16 @@ const router = createBrowserRouter([
         path: "contacts/:contactId",
         element: <Contact />,
         loader: contactLoader,
-      }
-    ]
+      },
+      {
+        // contact editor route
+        path: "contacts/:contactId/edit",
+        element: <EditContact />,
+        loader: contactLoader,
+      },
+    ],
   },
-])
+]);
 
 // root route
 ReactDOM.createRoot(document.getElementById('root')).render(
