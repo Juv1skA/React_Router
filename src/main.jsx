@@ -5,13 +5,15 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import './index.css'
-import Root from "./routes/root"
+import Root from "./routes/root" // root layout
+import ErrorPage from './error-page' // error page
 
 // defined root route
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
   }
 ])
 
