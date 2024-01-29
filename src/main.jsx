@@ -17,6 +17,7 @@ import EditContact, {
   action as editAction,
 } from './routes/edit'; // contact edit component
 import { action as destroyAction } from "./routes/destroy"; // contact destroy component
+import Index from "./routes/index"; // default index route
 
 // defined root route
 const router = createBrowserRouter([
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children : [
+      { index: true, element: <Index /> },
       {
         // contact route inside root
         path: "contacts/:contactId",
