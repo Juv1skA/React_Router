@@ -4,10 +4,16 @@
 import { 
     Outlet, 
     Link, 
-    useLoaderData,  } from "react-router-dom";
-// data loader
-import { getContact } from "../contacts";
+    useLoaderData, 
+    Form,  } from "react-router-dom";
 
+import { getContact, createContact } from "../contacts";
+// contact creator
+export async function action() {
+    const contact = await createContact();
+    return { contact };
+}
+// data loader
 export async function loader() {
     const contacts = await getContact();
     return { contacts }
@@ -38,9 +44,9 @@ export default function Root() {
                 aria-live="polite"
               ></div>
             </form>
-            <form method="post">
+            <Form method="post">
               <button type="submit">New</button>
-            </form>
+            </Form>
           </div>
           <nav>
           {contacts.length ? (
