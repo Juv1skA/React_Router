@@ -1,3 +1,5 @@
+// root layout component
+
 export default function Root() {
     return (
       <>
